@@ -5,6 +5,9 @@ import request from 'request'
 import { authHandler } from './routes/auth'
 import errorHandler from './routes/error'
 import dashboard from './routes/dashboard'
+import rbac_test_allow from './routes/rbac_test_allow'
+import rbac_test_not_allow from './routes/rbac_test_not_allow'
+
 import debug from './routes/debug'
 import config, { SECURITY_MODE_JWT, SECURITY_MODE_STANDALONE } from './config'
 import jwks from 'jwks-rsa'
@@ -112,6 +115,8 @@ if (process.env.NODE_ENV === 'stub') {
 } else {
   app.get('/', protect, dashboard)
   app.get('/dashboard', protect, dashboard)
+  app.get('/test-allowed', protect, rbac_test_allow)
+  app.get('/test-not-allowed', protect, rbac_test_not_allow)
   app.get('/auth/registration', authHandler('registration'))
   app.get('/auth/login', authHandler('login'))
   app.get('/error', errorHandler)

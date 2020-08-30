@@ -3,6 +3,18 @@
     <div class="container">
         <h2 class="greeting">Welcome back, <span class="user-identifier">{{session.identity.traits.email}}</span>!</h2>
         <h3>This example app is secure by default</h3>
+
+        <div>
+            you are allowed to visit
+            <a href="{{pathPrefix}}test-allowed">
+                 this,
+            </a>
+             but not
+            <a href="{{pathPrefix}}test-not-allowed">
+               this
+            </a>
+            
+        </div>
         <p>
             Hello, nice to have you! You signed up with this data:
         </p>
